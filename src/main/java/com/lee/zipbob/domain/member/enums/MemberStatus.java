@@ -1,4 +1,4 @@
-package com.lee.zipbob.domain.enums;
+package com.lee.zipbob.domain.member.enums;
 
 import com.lee.zipbob.global.mapper.EnumMapperType;
 import lombok.Getter;
@@ -6,11 +6,13 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum Provider implements EnumMapperType {
+public enum MemberStatus implements EnumMapperType {
 
-    GOOGLE("GOOGLE"),
-    KAKAO("KAKAO"),
-    APPLE("APPLE");
+
+    ACTIVE("활성화"),
+    LOCKED("잠금"),
+    QUIT("탈퇴"),
+    DELETED("삭제");
 
     private final String description; // Enum 설명
 
@@ -18,4 +20,5 @@ public enum Provider implements EnumMapperType {
     public String getCode() {
         return name();
     }
+
 }

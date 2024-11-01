@@ -1,9 +1,10 @@
-package com.lee.zipbob.domain.entity;
+package com.lee.zipbob.domain.member.entity;
 
 import com.lee.zipbob.domain.common.BaseTimeEntity;
-import com.lee.zipbob.domain.enums.Provider;
+import com.lee.zipbob.domain.member.enums.Provider;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,7 +26,21 @@ public class SocialAccount extends BaseTimeEntity {
     @Column(name = "provider", nullable = false)
     private Provider provider;
 
-    @Column(name = "provider_uid", nullable = false)
+    @Column(name = "provider_uid", updatable = false)
     private String providerUid;
 
+    @Builder
+    private SocialAccount(Member member, Provider provider, String providerUid) {
+        this.member = member;
+        this.provider = provider;
+        this.providerUid = providerUid;
+    }
+
+    public static SocialAccount create(Member member, Provider provider ,String providerUid) {
+        return SocialAccount.builder()
+                .member(member)
+                .provider(provider)
+                .providerUid(providerUid)
+                .build();
+    }
 }

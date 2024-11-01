@@ -1,7 +1,7 @@
-package com.lee.zipbob.domain.repository;
+package com.lee.zipbob.domain.member.repository;
 
 
-import com.lee.zipbob.domain.entity.SocialAccount;
+import com.lee.zipbob.domain.member.entity.SocialAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

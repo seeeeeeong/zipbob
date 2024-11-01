@@ -1,4 +1,4 @@
-package com.lee.zipbob.domain.enums;
+package com.lee.zipbob.global.jwt;
 
 import com.lee.zipbob.global.mapper.EnumMapperType;
 import lombok.Getter;
@@ -6,19 +6,14 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum MemberStatus implements EnumMapperType {
+public enum GrantType implements EnumMapperType {
 
-
-    ACTIVE("활성화"),
-    LOCKED("잠금"),
-    QUIT("탈퇴"),
-    DELETED("삭제");
+    BEARER("Bearer");
 
     private final String description; // Enum 설명
 
     @Override
     public String getCode() {
-        return name();
+        return null;
     }
-
 }

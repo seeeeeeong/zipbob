@@ -1,10 +1,11 @@
-package com.lee.zipbob.domain.entity;
+package com.lee.zipbob.domain.member.entity;
 
 import com.lee.zipbob.domain.common.BaseTimeEntity;
-import com.lee.zipbob.domain.enums.MemberStatus;
+import com.lee.zipbob.domain.member.enums.MemberStatus;
 import jakarta.persistence.*;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "member")
+@Table(schema = "member")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTimeEntity {
@@ -51,4 +52,16 @@ public class Member extends BaseTimeEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SocialAccount> socialAccounts = new ArrayList<>();
 
+    @Builder
+    private Member(String email, String nickname) {
+        this.email = email;
+        this.nickname = nickname;
+    }
+
+    public static Member create(String email, String nickname) {
+        return Member.builder()
+                .email(email)
+                .nickname(nickname)
+                .build();
+    }
 }
